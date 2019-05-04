@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/gin-gonic/gin"
@@ -19,6 +20,7 @@ func main() {
 		})
 	})
 	r.GET("/kill", func(c *gin.Context) {
+		fmt.Println("Good Bye!!")
 		os.Exit(1)
 	})
 	r.Run()
