@@ -9,7 +9,7 @@ jobs:
           echo $IMAGE_NAME
       - run: docker login -u $DOCKER_USER -p $DOCKER_PASS
 
-      - run: docker build -t $IMAGE_NAME .
+      - run: docker build -t $IMAGE_NAME -f .docker/Dockerfile .
 
       - run: docker tag $IMAGE_NAME $DOCKER_USER/$IMAGE_NAME:$CIRCLE_BRANCH
       - run: docker tag $IMAGE_NAME $DOCKER_USER/$IMAGE_NAME:latest
