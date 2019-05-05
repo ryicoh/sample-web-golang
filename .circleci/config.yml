@@ -1,4 +1,4 @@
-version: 2
+version: 2.1
 jobs:
   build:
     machine: true
@@ -11,8 +11,17 @@ jobs:
 
       - run: docker build -t $IMAGE_NAME -f .docker/Dockerfile .
 
-      - run: docker tag $IMAGE_NAME $DOCKER_USER/$IMAGE_NAME:$CIRCLE_BRANCH
+      - run: docker tag $IMAGE_NAME $DOCKER_USER/$IMAGE_NAME:$CIRCLE_TAG
       - run: docker tag $IMAGE_NAME $DOCKER_USER/$IMAGE_NAME:latest
 
-      - run: docker push $DOCKER_USER/$IMAGE_NAME:$CIRCLE_BRANCH
+      - run: docker push $DOCKER_USER/$IMAGE_NAME:$CIRCLE_TAG
       - run: docker push $DOCKER_USER/$IMAGE_NAME:latest
+
+workflows:
+  version: 2
+  build:
+    jobs:
+    - build:
+        filters:
+          tags:
+            only: /.*/
