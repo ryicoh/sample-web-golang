@@ -29,6 +29,11 @@ func main() {
 			"message": "v2",
 		})
 	})
+	r.GET("/v3", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "v3",
+		})
+	})
 	r.GET("/kill", func(c *gin.Context) {
 		fmt.Println("Good Bye!!")
 		os.Exit(1)
