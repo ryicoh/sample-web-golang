@@ -34,6 +34,16 @@ func main() {
 			"message": "v3",
 		})
 	})
+	r.GET("/v4", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": "v4",
+		})
+	})
+	r.GET("/host", func(c *gin.Context) {
+		c.JSON(200, gin.H{
+			"message": os.Hostname,
+		})
+	})
 	r.GET("/kill", func(c *gin.Context) {
 		fmt.Println("Good Bye!!")
 		os.Exit(1)
