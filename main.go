@@ -39,9 +39,20 @@ func main() {
 			"message": "v4",
 		})
 	})
-	r.GET("/host", func(c *gin.Context) {
+	r.GET("/v5", func(c *gin.Context) {
 		c.JSON(200, gin.H{
-			"message": os.Hostname,
+			"message": "v5",
+		})
+	})
+	r.GET("/host", func(c *gin.Context) {
+		hostname, err := os.Hostname()
+		if err != nil {
+			c.JSON(500, gin.H{
+				"error": err,
+			})
+		}
+		c.JSON(200, gin.H{
+			"message": hostname,
 		})
 	})
 	r.GET("/kill", func(c *gin.Context) {
