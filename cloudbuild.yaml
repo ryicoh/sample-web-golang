@@ -4,22 +4,22 @@ steps:
   args:
   - '-c'
   - |
-    docker pull asia.gcr.io/trunk-work-school/sample-web:latest || exit 0
+    docker pull asia.gcr.io/$PROJECT_ID/sample-web:latest || exit 0
 - name: 'gcr.io/cloud-builders/docker'
   args: [
     'build',
-    '-t', 'asia.gcr.io/trunk-work-school/sample-web:latest',
-    '--cache-from', 'asia.gcr.io/trunk-work-school/sample-web:latest',
+    '-t', 'asia.gcr.io/$PROJECT_ID/sample-web:latest',
+    '--cache-from', 'asia.gcr.io/$PROJECT_ID/sample-web:latest',
     '-f', '.docker/Dockerfile',
     '.'
   ]
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'asia.gcr.io/trunk-work-school/sample-web:latest']
+  args: ['push', 'asia.gcr.io/$PROJECT_ID/sample-web:latest']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['tag', 'asia.gcr.io/trunk-work-school/sample-web:latest', 'asia.gcr.io/trunk-work-school/sample-web:$SHORT_SHA']
+  args: ['tag', 'asia.gcr.io/$PROJECT_ID/sample-web:latest', 'asia.gcr.io/$PROJECT_ID/sample-web:$SHORT_SHA']
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'asia.gcr.io/trunk-work-school/sample-web:$SHORT_SHA']
+  args: ['push', 'asia.gcr.io/$PROJECT_ID/sample-web:$SHORT_SHA']
 timeout: 180s
 tags: ['first', 'build']
-images: ['asia.gcr.io/trunk-work-school/sample-web:latest','asia.gcr.io/trunk-work-school/sample-web:$SHORT_SHA']
+images: ['asia.gcr.io/$PROJECT_ID/sample-web:latest','asia.gcr.io/$PROJECT_ID/sample-web:$SHORT_SHA']
 
