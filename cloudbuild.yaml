@@ -9,5 +9,5 @@ steps:
   args: ['push', 'asia.gcr.io/trunk-work-school/sample-web:$REVISION_ID']
 timeout: 180s
 tags: ['first', 'build']
-images: ['asia.gcr.io/trunk-work-school/sample-web:$REVISION_ID']
+images: ['asia.gcr.io/trunk-work-school/sample-web:latest','asia.gcr.io/trunk-work-school/sample-web:$REVISION_ID']
 
