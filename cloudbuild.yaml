@@ -1,0 +1,11 @@
+steps:
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '-t', 'asia.gcr.io/trunk-work-school/sample-web', '-f', '.docker/Dockerfile', '.']
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia.gcr.io/trunk-work-school/sample-web']
+options:
+    machineType: 'N1_STANDARD_1'
+timeout: 180s
+tags: ['first', 'build']
+images: ['asia.gcr.io/trunk-work-school/sample-web']
+
