@@ -19,31 +19,6 @@ func main() {
 			"message": "pong",
 		})
 	})
-	r.GET("/v1", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "v1",
-		})
-	})
-	r.GET("/v2", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "v2",
-		})
-	})
-	r.GET("/v3", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "v3",
-		})
-	})
-	r.GET("/v4", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "v4",
-		})
-	})
-	r.GET("/v5", func(c *gin.Context) {
-		c.JSON(200, gin.H{
-			"message": "v5",
-		})
-	})
 	r.GET("/v6", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "v6",
